@@ -7,8 +7,6 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.lastminute.salestaxes.ecommerce.ShoppingBasket;
-import com.lastminute.salestaxes.ecommerce.ShoppingItem;
 import com.lastminute.salestaxes.goods.BookItem;
 import com.lastminute.salestaxes.goods.CosmeticItem;
 import com.lastminute.salestaxes.goods.FoodItem;

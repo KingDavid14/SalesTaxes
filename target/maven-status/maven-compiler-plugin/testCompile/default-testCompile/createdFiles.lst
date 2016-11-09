@@ -2,6 +2,7 @@ com\lastminute\salestaxes\policies\DefaultSalesTaxPolicyTest.class
 com\lastminute\salestaxes\ecommerce\ReceiptTest.class
 com\lastminute\salestaxes\policies\ExemptSalesTaxPolicyTest.class
 com\lastminute\salestaxes\policies\SalesTaxPolicyTest.class
+com\lastminute\salestaxes\resources\BundleManagerTest.class
 com\lastminute\salestaxes\AllTests.class
 com\lastminute\salestaxes\ecommerce\ShoppingBasketTest.class
 com\lastminute\salestaxes\goods\ItemTest.class

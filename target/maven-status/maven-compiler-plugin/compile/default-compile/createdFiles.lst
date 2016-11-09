@@ -3,7 +3,6 @@ com\lastminute\salestaxes\ecommerce\ShoppingBasket.class
 com\lastminute\salestaxes\goods\CosmeticItem.class
 com\lastminute\salestaxes\goods\Item.class
 com\lastminute\salestaxes\policies\DefaultSalesTaxPolicy.class
-com\lastminute\salestaxes\resources\BundleManager$1.class
 com\lastminute\salestaxes\policies\SalesTaxPolicy.class
 com\lastminute\salestaxes\Main.class
 com\lastminute\salestaxes\ecommerce\Receipt.class
@@ -13,4 +12,3 @@ com\lastminute\salestaxes\goods\MedicalProductItem.class
 com\lastminute\salestaxes\ecommerce\ShoppingItem.class
 com\lastminute\salestaxes\resources\BundleManager.class
 com\lastminute\salestaxes\policies\ExemptSalesTaxPolicy.class
-com\lastminute\salestaxes\resources\BundleManager$BundleManagerHelper.class
