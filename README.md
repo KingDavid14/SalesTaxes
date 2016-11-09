@@ -3,10 +3,12 @@
 README
 
 
-The software was tested with:
+The software was developed and tested with:
  - Java 1.8
  - Eclipse Neon
  - Maven 3
+ - Git
+ - Travis CI
  
 Informations
 - Once imported the projects you can execute the only main method inside com.lastminute.salestaxes.Main to see the three output of the three shopping basket of the case study
