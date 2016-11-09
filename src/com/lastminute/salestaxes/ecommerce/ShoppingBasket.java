@@ -2,6 +2,8 @@ package com.lastminute.salestaxes.ecommerce;
 
 import java.util.HashMap;
 
+import org.apache.log4j.Logger;
+
 import com.lastminute.salestaxes.goods.Item;
 
 /**
@@ -13,6 +15,8 @@ import com.lastminute.salestaxes.goods.Item;
  */
 public class ShoppingBasket
 {
+	private static final transient Logger log = Logger.getLogger(ShoppingBasket.class);
+	
 	private HashMap<Integer, ShoppingItem> shoppingBasket;
 
 	public ShoppingBasket()
@@ -23,7 +27,9 @@ public class ShoppingBasket
 	
 	public void addItem(Item item){
 		if (item == null || !item.isValid()){
-			throw new IllegalArgumentException("The item is null or not valid!");
+			String message = "The item is null or not valid!";
+			log.error(message);
+			throw new IllegalArgumentException(message);
 		}
 		
 		ShoppingItem addingItem = new ShoppingItem(item);
@@ -32,7 +38,9 @@ public class ShoppingBasket
 	
 	public void addItem(ShoppingItem item){
 		if (item == null || !item.getItem().isValid()){
-			throw new IllegalArgumentException("The item is null or not valid!");
+			String message = "The item is null or not valid!";
+			log.error(message);
+			throw new IllegalArgumentException(message);
 		}
 		
 		if (shoppingBasket.containsKey(item.getKey())){
@@ -67,7 +75,9 @@ public class ShoppingBasket
 	private void incrementQuantity(int key, int num){
 		ShoppingItem item = shoppingBasket.get(key);
 		if (item == null){
-			throw new IllegalArgumentException("Doesn't exists an item with key " + key + " in the shopping basket");
+			String message = "Doesn't exists an item with key " + key + " in the shopping basket";
+			log.error(message);
+			throw new IllegalArgumentException(message);
 		}
 		
 		item.setQuantity(item.getQuantity() + num);

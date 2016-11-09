@@ -2,6 +2,8 @@ package com.lastminute.salestaxes.ecommerce;
 
 import java.math.BigDecimal;
 
+import org.apache.log4j.Logger;
+
 import com.lastminute.salestaxes.goods.Item;
 
 /**
@@ -14,6 +16,7 @@ import com.lastminute.salestaxes.goods.Item;
  */
 public class ShoppingItem
 {
+	private static final transient Logger log = Logger.getLogger(ShoppingItem.class);
 	private Item item;
 	private int quantity;
 	
@@ -60,7 +63,9 @@ public class ShoppingItem
 	{
 		//the quantity can't be < 1
 		if (quantity < 1){
-			throw new IllegalArgumentException("quantity can't be less than 1");
+			String message = "quantity can't be less than 1";
+			log.error(message);
+			throw new IllegalArgumentException(message);
 		}
 		this.quantity = quantity;
 	}

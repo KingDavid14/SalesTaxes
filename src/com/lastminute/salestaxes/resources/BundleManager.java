@@ -19,7 +19,7 @@ public class BundleManager {
 	private static final String BUNDLE_NAME = "com.lastminute.salestaxes.resources.MessagesBundle";
 	
 	private static ResourceBundle messages;
-	private static Logger log = Logger.getLogger(BundleManager.class);
+	private static final transient Logger log = Logger.getLogger(BundleManager.class);
 	
 	
 	private BundleManager(){

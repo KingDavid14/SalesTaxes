@@ -2,6 +2,8 @@ package com.lastminute.salestaxes.goods;
 
 import java.math.BigDecimal;
 
+import org.apache.log4j.Logger;
+
 import com.lastminute.salestaxes.policies.SalesTaxPolicy;
 
 /**
@@ -11,6 +13,7 @@ import com.lastminute.salestaxes.policies.SalesTaxPolicy;
  */
 public abstract class Item
 {
+	private static final transient Logger log = Logger.getLogger(Item.class);
 	protected String name;
 	protected boolean imported;
 	protected BigDecimal taxFreePrice;
@@ -91,7 +94,9 @@ public abstract class Item
 	public BigDecimal getShelfPrice()
 	{
 		if (!isValid()){
-			throw new IllegalStateException("The item is not correctly initialized! Please verify that price, name and sales tax policy are correctly setted.");
+			String message = "The item is not correctly initialized! Please verify that price, name and sales tax policy are correctly setted.";
+			log.error(message);
+			throw new IllegalStateException(message);
 		}
 		
 		return taxFreePrice.add(salesTaxPolicy.getSalesTaxesAmount(this));
