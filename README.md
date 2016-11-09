@@ -20,14 +20,13 @@ SalesTaxes
 	
 	src 
 		com.lastminute.salestaxes
-							Main.java : main file that allows to launch the software and that generates the 									output for the three shopping basket of the test case
+							Main.java : main file that allows to launch the software and that generates the output for the three shopping basket of the test case
 							ecommerce
 								     Classes releated to shopping basket and receipt
 							goods
-									 Classes that describes all kinds of goods (releted to case 										 study)
+									 Classes that describes all kinds of goods (releted to case study)
 							policies
-									 Classes that implements the sales taxes policies:
-									 It was adopted Strategy Design pattern (slightly edited) in 										 order to calculate the sales taxes for different kinds of 									         goods.
+									 Classes that implements the sales taxes policies: It was adopted Strategy Design pattern (slightly edited) in order to calculate the sales taxes for different kinds of goods.
 							resources
 									BundleManager.java: A Singleton class that manages the properties files 								  									inside the same package
 							
