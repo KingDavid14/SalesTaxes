@@ -3,13 +3,12 @@
 README
 
 
-System Requirments
+The software was tested with:
  - Java 1.8
  - Eclipse Neon
  - Maven 3
  
 Informations
-- In order to run the software: you have to import inside your Eclipse workspace SalesTaxes.zip projects (File -> Import -> General -> Existing projects into Workspace -> Select ARchive File... etc)
 - Once imported the projects you can execute the only main method inside com.lastminute.salestaxes.Main to see the three output of the three shopping basket of the case study
 - Yuo can also run the ReceiptTest unit test case in order to check if the total amount and the total sales taxes of the three shopping basket are correct
 
@@ -18,17 +17,17 @@ Java project explanation
 The SalesTaxes project has the following structure:
 
 SalesTaxes
+	
 	src 
 		com.lastminute.salestaxes
 							Main.java : main file that allows to launch the software and that generates the 									output for the three shopping basket of the test case
 							ecommerce
 								     Classes releated to shopping basket and receipt
 							goods
-									 Classes that describes all kinds of goods (releted to case study)
+									 Classes that describes all kinds of goods (releted to case 										 study)
 							policies
 									 Classes that implements the sales taxes policies:
-									 It was adopted Strategy Design pattern (slightly edited) in order
-									 to calculate the sales taxes for different kinds of goods.
+									 It was adopted Strategy Design pattern (slightly edited) in 										 order to calculate the sales taxes for different kinds of 									         goods.
 							resources
 									BundleManager.java: A Singleton class that manages the properties files 								  									inside the same package
 							
