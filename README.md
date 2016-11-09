@@ -11,8 +11,7 @@ The software was developed and tested with:
  - Travis CI
  
 Informations
-- Once imported the projects you can execute the only main method inside com.lastminute.salestaxes.Main to see the three output of the three shopping basket of the case study
-- Yuo can also run the ReceiptTest unit test case in order to check if the total amount and the total sales taxes of the three shopping basket are correct
+- Once imported the projects you have to execute the only main method inside com.lastminute.salestaxes.Main to see the three output of the three shopping basket of the case study
 
 
 Java project explanation
