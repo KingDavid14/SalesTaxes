@@ -42,7 +42,7 @@ SalesTaxes
 							resources
 									 Test cases of BundleManager class
 							
-							AllTests.java: Test suite that allows to launch all test cases together
+							AllTests.java: Test suite that allows to launch all test cases together from the IDE
 
 		
 
