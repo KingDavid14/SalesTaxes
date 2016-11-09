@@ -1,8 +1,5 @@
 # SalesTaxes
 
-README
-
-
 The software was developed and tested with:
  - Java 1.8
  - Eclipse Neon
@@ -10,11 +7,7 @@ The software was developed and tested with:
  - Git
  - Travis CI
  
-Informations
-- Once imported the projects you have to execute the only main method inside com.lastminute.salestaxes.Main to see the three output of the three shopping basket of the case study
-
-
-Java project explanation
+Project structure
 The SalesTaxes project has the following structure:
 
 SalesTaxes
