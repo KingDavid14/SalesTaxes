@@ -28,7 +28,7 @@ SalesTaxes
 							policies
 									 Classes that implements the sales taxes policies: It was adopted Strategy Design pattern (slightly edited) in order to calculate the sales taxes for different kinds of goods.
 							resources
-									BundleManager.java: A Singleton class that manages the properties files 								  									inside the same package
+									BundleManager.java: A Singleton class that manages the properties files inside the same package
 							
 	test (unit tests)
 		com.lastminute.salestaxes
