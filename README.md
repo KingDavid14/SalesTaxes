@@ -5,9 +5,8 @@ README
 
 System Requirments
  - Java 1.8
- - JUnit4
  - Eclipse Neon
-
+ - Maven 3
  
 Informations
 - In order to run the software: you have to import inside your Eclipse workspace SalesTaxes.zip projects (File -> Import -> General -> Existing projects into Workspace -> Select ARchive File... etc)
