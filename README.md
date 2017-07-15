@@ -13,7 +13,7 @@ The SalesTaxes project has the following structure:
 SalesTaxes
 	
 	src 
-		com.lastminute.salestaxes
+		com.ve.salestaxes
 							Main.java : main file that allows to launch the software and that generates the output for the three shopping basket of the test case
 							ecommerce
 								     Classes releated to shopping basket and receipt
@@ -25,7 +25,7 @@ SalesTaxes
 									BundleManager.java: A Singleton class that manages the properties files inside the same package
 							
 	test (unit tests)
-		com.lastminute.salestaxes
+		com.ve.salestaxes
 							ecommerce
 								     Test cases of shopping basket and receipt
 							goods
