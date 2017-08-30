@@ -40,3 +40,6 @@ Notes
 	For the amounts and its calculation was used java.math.BigDecimal that is the type designed by java architects to best represents money amounts and bacause it gives its user complete control over rounding behavior.
 	The classes was designed inspired to the DRY principle (https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) in order to make the code
 	easy to understand, easy to manage and in case extend and less error prone.
+
+	
+	To check the Travis CI build history see the following link https://travis-ci.org/KingDavid14/SalesTaxes
