@@ -75,6 +75,7 @@ public class BundleManagerTest {
 	
 	@Test
 	public void testGetStringWithParameter() {
+		bundle.setBundleLocale(Locale.US);
 		String msg = bundle.getString(TOTAL_KEY, "100");
 		assertEquals("Total: 100", msg);
 	}
