@@ -1,9 +1,9 @@
-package com.ve.salestaxes.policies;
+package com.ve.salestaxes.services;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import com.ve.salestaxes.goods.Item;
+import com.ve.salestaxes.bo.Item;
 
 /**
  * 
@@ -16,7 +16,7 @@ import com.ve.salestaxes.goods.Item;
  * for the getSalesTaxesAmount method.
  *
  */
-public abstract class SalesTaxPolicy
+public abstract class SalesTaxPolicyService
 {
 	
 	/**

@@ -1,15 +1,15 @@
-package com.ve.salestaxes.policies;
+package com.ve.salestaxes.services;
 
 import java.math.BigDecimal;
 
-import com.ve.salestaxes.goods.Item;
+import com.ve.salestaxes.bo.Item;
 
 /**
  * 
  * @author Valerio Emanuele
  * This class implements the policy for the exempt goods from basic sales tax
  */
-public class ExemptSalesTaxPolicy extends SalesTaxPolicy
+public class ExemptSalesTaxPolicyService extends SalesTaxPolicyService
 {
 	/**
 	 * For the book goods there is only import duty as sales tax when the books are imported

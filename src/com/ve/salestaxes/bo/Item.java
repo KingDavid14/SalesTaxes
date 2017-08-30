@@ -1,10 +1,10 @@
-package com.ve.salestaxes.goods;
+package com.ve.salestaxes.bo;
 
 import java.math.BigDecimal;
 
 import org.apache.log4j.Logger;
 
-import com.ve.salestaxes.policies.SalesTaxPolicy;
+import com.ve.salestaxes.services.SalesTaxPolicyService;
 
 /**
  * 
@@ -14,35 +14,45 @@ import com.ve.salestaxes.policies.SalesTaxPolicy;
 public abstract class Item
 {
 	private static final transient Logger log = Logger.getLogger(Item.class);
+	protected int id;
 	protected String name;
 	protected boolean imported;
 	protected BigDecimal taxFreePrice;
-	protected SalesTaxPolicy salesTaxPolicy;
+	protected SalesTaxPolicyService salesTaxPolicyService;
 	
-	public Item(String name, boolean imported, BigDecimal taxFreePrice)
+	public Item(int id, String name, boolean imported, BigDecimal taxFreePrice)
 	{
 		super();
+		this.id = id;
 		this.name = name;
 		this.imported = imported;
 		this.taxFreePrice = taxFreePrice;
 	}
 	
-	public Item(String name, boolean imported, BigDecimal taxFreePrice, SalesTaxPolicy salesTaxPolicy)
+	public Item(int id, String name, boolean imported, BigDecimal taxFreePrice, SalesTaxPolicyService salesTaxPolicyService)
 	{
-		this(name, imported, taxFreePrice);
-		this.salesTaxPolicy = salesTaxPolicy;
+		this(id, name, imported, taxFreePrice);
+		this.salesTaxPolicyService = salesTaxPolicyService;
 	}
 	
 	/**
 	 * This method check if the Item is Valid: name not empty,taxFreePrice not null and salesTaxPolicy
-	 * @return true if this item is valid, fals otherwis
+	 * @return true if this item is valid, fals otherwise
 	 */
 	public boolean isValid()
 	{
 		return 	name != null 
 				&& !name.trim().isEmpty() 
 				&& taxFreePrice != null 
-				&& salesTaxPolicy != null;
+				&& salesTaxPolicyService != null;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName()
@@ -75,16 +85,16 @@ public abstract class Item
 		this.taxFreePrice = taxFreePrice;
 	}
 
-	public void setSalesTaxPolicy(SalesTaxPolicy salesTaxPolicy)
+	public void setSalesTaxPolicy(SalesTaxPolicyService salesTaxPolicy)
 	{
-		this.salesTaxPolicy = salesTaxPolicy;
+		this.salesTaxPolicyService = salesTaxPolicy;
 	}
 	
 	/**
 	 * Returns the sales taxes amount for this item
 	 */
 	public BigDecimal getSalesTaxAmount(){
-		return salesTaxPolicy.getSalesTaxesAmount(this);
+		return salesTaxPolicyService.getSalesTaxesAmount(this);
 	}
 	
 	/**
@@ -99,30 +109,19 @@ public abstract class Item
 			throw new IllegalStateException(message);
 		}
 		
-		return taxFreePrice.add(salesTaxPolicy.getSalesTaxesAmount(this));
+		return taxFreePrice.add(salesTaxPolicyService.getSalesTaxesAmount(this));
 	}
 
 	@Override
-	/**
-	 * Univocal identifier of the item
-	 */
-	public int hashCode()
-	{
+	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (imported ? 1231 : 1237);
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((taxFreePrice == null) ? 0 : taxFreePrice.hashCode());
+		result = prime * result + id;
 		return result;
 	}
 
 	@Override
-	/**
-	 * For this case study an item is considered equal to another one
-	 * if tha name, the tax free price and the imported flag are equals
-	 */
-	public boolean equals(Object obj)
-	{
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -130,24 +129,8 @@ public abstract class Item
 		if (getClass() != obj.getClass())
 			return false;
 		Item other = (Item) obj;
-		if (imported != other.imported)
-			return false;
-		if (name == null)
-		{
-			if (other.name != null)
-				return false;
-		}
-		else if (!name.equals(other.name))
-			return false;
-		if (taxFreePrice == null)
-		{
-			if (other.taxFreePrice != null)
-				return false;
-		}
-		else if (!taxFreePrice.equals(other.taxFreePrice))
+		if (id != other.id)
 			return false;
 		return true;
 	}
-	
-	
 }

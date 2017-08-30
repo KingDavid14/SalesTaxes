@@ -1,10 +1,8 @@
-package com.ve.salestaxes.ecommerce;
+package com.ve.salestaxes.bo;
 
 import java.math.BigDecimal;
 
 import org.apache.log4j.Logger;
-
-import com.ve.salestaxes.goods.Item;
 
 /**
  * 
@@ -30,10 +28,6 @@ public class ShoppingItem
 	public ShoppingItem(Item item)
 	{
 		this(item, 1);
-	}
-
-	public int getKey(){
-		return item.hashCode();
 	}
 	
 	public Item getItem()
@@ -69,5 +63,29 @@ public class ShoppingItem
 		}
 		this.quantity = quantity;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((item == null) ? 0 : item.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ShoppingItem other = (ShoppingItem) obj;
+		if (item == null) {
+			if (other.item != null)
+				return false;
+		} else if (!item.equals(other.item))
+			return false;
+		return true;
+	}	
 }

@@ -1,4 +1,4 @@
-package com.ve.salestaxes.policies;
+package com.ve.salestaxes.services;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,10 +8,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ve.salestaxes.goods.BookItem;
-import com.ve.salestaxes.goods.FoodItem;
-import com.ve.salestaxes.goods.MedicalProductItem;
-import com.ve.salestaxes.policies.ExemptSalesTaxPolicy;
+import com.ve.salestaxes.bo.BookItem;
+import com.ve.salestaxes.bo.FoodItem;
+import com.ve.salestaxes.bo.MedicalProductItem;
+import com.ve.salestaxes.services.ExemptSalesTaxPolicyService;
 
 /**
  * 
@@ -23,7 +23,7 @@ import com.ve.salestaxes.policies.ExemptSalesTaxPolicy;
  * expected sales tax and the item sales tax calculated by the getSalesTaxAmount method
  *
  */
-public class ExemptSalesTaxPolicyTest
+public class ExemptSalesTaxPolicyServiceTest
 {
 	BookItem importedBook;
 	BookItem book;
@@ -34,11 +34,11 @@ public class ExemptSalesTaxPolicyTest
 	@Before
 	public void setUp() throws Exception
 	{
-		importedBook = new BookItem("imported book", true, new BigDecimal("10.00"));
-		book = new BookItem("book", false, new BigDecimal("12.49"));
-		food = new FoodItem("chocolate bar", false, new BigDecimal("0.85"));
-		importedFood = new FoodItem("box of imported chocolates", true, new BigDecimal("11.25"));
-		medicalProduct = new MedicalProductItem("box of imported chocolates", false, new BigDecimal("9.75"));
+		importedBook = new BookItem(1, "imported book", true, new BigDecimal("10.00"));
+		book = new BookItem(2, "book", false, new BigDecimal("12.49"));
+		food = new FoodItem(3, "chocolate bar", false, new BigDecimal("0.85"));
+		importedFood = new FoodItem(4, "box of imported chocolates", true, new BigDecimal("11.25"));
+		medicalProduct = new MedicalProductItem(5, "box of imported chocolates", false, new BigDecimal("9.75"));
 	}
 
 	@After
@@ -49,7 +49,7 @@ public class ExemptSalesTaxPolicyTest
 	@Test
 	public void testGetSalesTaxesAmount()
 	{
-		ExemptSalesTaxPolicy exemptSalesTaxPolicy =  new ExemptSalesTaxPolicy();
+		ExemptSalesTaxPolicyService exemptSalesTaxPolicy =  new ExemptSalesTaxPolicyService();
 		
 		assertEquals(new BigDecimal("0.50"), exemptSalesTaxPolicy.getSalesTaxesAmount(importedBook));
 		assertEquals(new BigDecimal("0"), exemptSalesTaxPolicy.getSalesTaxesAmount(book));

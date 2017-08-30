@@ -1,4 +1,4 @@
-package com.ve.salestaxes.ecommerce;
+package com.ve.salestaxes.bo;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -11,12 +11,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.ve.salestaxes.ecommerce.ShoppingBasket;
-import com.ve.salestaxes.ecommerce.ShoppingItem;
-import com.ve.salestaxes.goods.BookItem;
-import com.ve.salestaxes.goods.CosmeticItem;
-import com.ve.salestaxes.goods.Item;
-import com.ve.salestaxes.goods.MultimediaItem;
+import com.ve.salestaxes.bo.BookItem;
+import com.ve.salestaxes.bo.CosmeticItem;
+import com.ve.salestaxes.bo.Item;
+import com.ve.salestaxes.bo.MultimediaItem;
+import com.ve.salestaxes.bo.ShoppingBasket;
+import com.ve.salestaxes.bo.ShoppingItem;
 
 /**
  * 
@@ -40,90 +40,68 @@ public class ShoppingBasketTest
 	public void testAddInvalidItem()
 	{
 		thrown.expect(IllegalArgumentException.class);
-		Item item = new BookItem("", true, null);
+		Item item = new BookItem(1, "", true, null);
 		shoppingBasket.addItem(item);
 	}
 	
 	@Test
 	public void testAddItem()
 	{
-		Item item = new BookItem("book", true, BigDecimal.ONE);
+		Item item = new BookItem(2, "book", true, BigDecimal.ONE);
 		shoppingBasket.addItem(item);
 		
-		assertNotNull(shoppingBasket.getItem(item.hashCode()));
-	}
-	
-	@Test
-	public void testIncrementQuantityUnexistentItem()
-	{
-		thrown.expect(IllegalArgumentException.class);
-		Item item = new MultimediaItem("Music CD", true, BigDecimal.TEN);
-		shoppingBasket.addItem(item);
-		shoppingBasket.incrementQuantity(123);
+		assertNotNull(shoppingBasket.getShoppingItem(item));
 	}
 	
 	@Test
 	public void testIncrementQuantity()
 	{
-		Item item = new BookItem("book", true, BigDecimal.ONE);
+		Item item = new BookItem(4, "book", true, BigDecimal.ONE);
 		shoppingBasket.addItem(item);
 		
-		ShoppingItem shopItem = shoppingBasket.getItem(item.hashCode());
-		shoppingBasket.incrementQuantity(shopItem.getKey());
+		ShoppingItem shopItem = shoppingBasket.getShoppingItem(item);
+		shoppingBasket.incrementQuantity(item);
 		
-		assertNotNull(shoppingBasket.getItem(shopItem.getKey()));
-		assertEquals(2,shoppingBasket.getItem(shopItem.getKey()).getQuantity());
+		assertNotNull(shoppingBasket.getShoppingItem(item));
+		assertEquals(2,shoppingBasket.getShoppingItem(item).getQuantity());
 		
 		//if it's added the same item then the shopping basket increments the quantity
 		shoppingBasket.addItem(item);
-		assertEquals(3,shoppingBasket.getItem(shopItem.getKey()).getQuantity());
+		assertEquals(3,shoppingBasket.getShoppingItem(item).getQuantity());
 	}
 	
 	@Test
 	public void testDecrementInvalidQuantity()
 	{
 		thrown.expect(IllegalArgumentException.class);
-		Item item = new MultimediaItem("Music CD", true, BigDecimal.TEN);
+		Item item = new MultimediaItem(1, "Music CD", true, BigDecimal.TEN);
 		shoppingBasket.addItem(item);
-		shoppingBasket.decrementQuantity(item.hashCode());
+		
+		ShoppingItem shoppingItem = shoppingBasket.getShoppingItem(item);
+		shoppingBasket.decrementQuantity(item);
 	}
 	
 	@Test
 	public void testDecrementQuantity()
 	{
-		Item item = new MultimediaItem("Music CD", true, BigDecimal.TEN);
+		Item item = new MultimediaItem(1, "Music CD", true, BigDecimal.TEN);
 		ShoppingItem shopItem = new ShoppingItem(item, 10);
 		shoppingBasket.addItem(shopItem);
-		shoppingBasket.decrementQuantity(shopItem.getKey());
+		shoppingBasket.decrementQuantity(item);
 		
-		assertEquals(9,shoppingBasket.getItem(shopItem.getKey()).getQuantity());
+		assertEquals(9,shoppingBasket.getShoppingItem(item).getQuantity());
 	}
 	
 	@Test
 	public void testRemoveItem()
 	{
-		Item item = new CosmeticItem("Parfume", true, BigDecimal.TEN);
+		Item item = new CosmeticItem(1, "Parfume", true, BigDecimal.TEN);
 		
 		shoppingBasket.addItem(item);
 		
-		assertNotNull(shoppingBasket.getItem(item.hashCode()));
+		assertNotNull(shoppingBasket.getShoppingItem(item));
 		
-		shoppingBasket.removeItem(item.hashCode());
-		assertNull(shoppingBasket.getItem(item.hashCode()));
-	}
-
-	@Test
-	public void testPurchaseEmptyShoppingBasket(){
-		thrown.expect(IllegalStateException.class);
-		shoppingBasket.clear();
-		shoppingBasket.purchase();
-	}
-	
-	@Test
-	public void testPurchaseShoppingBasket(){
-		Item item = new CosmeticItem("Parfume", true, BigDecimal.TEN);
-		shoppingBasket.addItem(item);
-		
-		assertNotNull(shoppingBasket.purchase());
+		shoppingBasket.removeShoppingItem(item);
+		assertNull(shoppingBasket.getShoppingItem(item));
 	}
 }

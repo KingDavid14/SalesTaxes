@@ -1,4 +1,4 @@
-package com.ve.salestaxes.policies;
+package com.ve.salestaxes.services;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import com.ve.salestaxes.policies.ExemptSalesTaxPolicy;
-import com.ve.salestaxes.policies.SalesTaxPolicy;
+import com.ve.salestaxes.services.ExemptSalesTaxPolicyService;
+import com.ve.salestaxes.services.SalesTaxPolicyService;
 
 /**
  * 
@@ -18,12 +18,12 @@ import com.ve.salestaxes.policies.SalesTaxPolicy;
  * Because is not possible instantiate abstract class SalesTaxPolicy, in order to test the salesTaxRound method
  * it's instantiated a ExemptSalesTaxPolicy object
  */
-public class SalesTaxPolicyTest
+public class SalesTaxPolicyServiceTest
 {
 	@Test
 	public void testSalesTaxRound()
 	{
-		SalesTaxPolicy bookStPolicy = new ExemptSalesTaxPolicy();
+		SalesTaxPolicyService bookStPolicy = new ExemptSalesTaxPolicyService();
 		
 		assertEquals(new BigDecimal("1.50"), bookStPolicy.salesTaxRound(new BigDecimal("1.499")));
 		assertEquals(new BigDecimal("1.00"), bookStPolicy.salesTaxRound(new BigDecimal("0.999")));

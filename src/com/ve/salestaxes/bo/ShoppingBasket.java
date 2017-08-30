@@ -1,10 +1,9 @@
-package com.ve.salestaxes.ecommerce;
+package com.ve.salestaxes.bo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.apache.log4j.Logger;
-
-import com.ve.salestaxes.goods.Item;
 
 /**
  * 
@@ -17,12 +16,12 @@ public class ShoppingBasket
 {
 	private static final transient Logger log = Logger.getLogger(ShoppingBasket.class);
 	
-	private HashMap<Integer, ShoppingItem> shoppingBasket;
+	private ArrayList<ShoppingItem> shoppingBasket;
 
 	public ShoppingBasket()
 	{
 		super();
-		this.shoppingBasket = new HashMap<Integer, ShoppingItem>();
+		this.shoppingBasket = new ArrayList<>();
 	}
 	
 	public void addItem(Item item){
@@ -36,70 +35,80 @@ public class ShoppingBasket
 		addItem(addingItem);
 	}
 	
-	public void addItem(ShoppingItem item){
-		if (item == null || !item.getItem().isValid()){
+	public void addItem(ShoppingItem shoppingItem){
+		if (shoppingItem == null || !shoppingItem.getItem().isValid()){
 			String message = "The item is null or not valid!";
 			log.error(message);
 			throw new IllegalArgumentException(message);
 		}
 		
-		if (shoppingBasket.containsKey(item.getKey())){
-			incrementQuantity(item.getKey());
+		if (shoppingBasket.contains(shoppingItem)){
+			incrementQuantity(shoppingItem.getItem());
 		}
 		else{
-			shoppingBasket.put(item.getKey(), item);
+			shoppingBasket.add(shoppingItem);
 		}
 	}
 	
 	/**
 	 * Increments by one the quantity of an item already placed in the kart
-	 * @param key the key of the item to increment the quantity
+	 * @param item the item to increment the quantity
 	 */
-	public void incrementQuantity(int key){
-		incrementQuantity(key, 1);
+	public void incrementQuantity(Item item){
+		incrementQuantity(item, 1);
 	}
 	
 	/**
 	 * Decrements by one the quantity of an item already placed in the kart
-	 * @param key the key of the item to decrement the quantity
+	 * @param item the item to increment the quantity
 	 */
-	public void decrementQuantity(int key){
-		incrementQuantity(key, -1);
+	public void decrementQuantity(Item item){
+		incrementQuantity(item, -1);
 	}
 	
 	/**
 	 * Update the quantity of an item placed in the shopping basket.
-	 * @param key - the key of the item to update the quantity
+	 * @param item - the item to update the quantity
 	 * @param num - the quantity to add to the current quantity
 	 */
-	private void incrementQuantity(int key, int num){
-		ShoppingItem item = shoppingBasket.get(key);
-		if (item == null){
-			String message = "Doesn't exists an item with key " + key + " in the shopping basket";
+	private void incrementQuantity(Item item, int num){
+		int itemIndex = indexOf(item);
+		if (itemIndex == -1){
+			String message = "Doesn't exists an item with itemId " + item.getId() + " in the shopping basket";
 			log.error(message);
 			throw new IllegalArgumentException(message);
 		}
 		
-		item.setQuantity(item.getQuantity() + num);
-		shoppingBasket.put(key, item);
+		ShoppingItem shoppingItem = shoppingBasket.get(itemIndex);
+		shoppingItem.setQuantity(shoppingItem.getQuantity() + num);
+		shoppingBasket.set(itemIndex, shoppingItem);
 	}
 	
 	/**
 	 * Removes an item from the shopping basket
-	 * @param key - the key of the item to delete
+	 * @param shoppingItem - the item to delete
 	 * @return true if the item was deleted, false otherwise
 	 */
-	public boolean removeItem(int key){
-		return shoppingBasket.remove(key) != null;
+	public boolean removeShoppingItem(Item item){
+		int index = indexOf(item);
+		
+		if(index == -1){
+			return false;
+		}
+		return shoppingBasket.remove(index) != null;
 	}
 	
 	/**
 	 * Retrieve and returns an item from the shopping basket
-	 * @param key - the key of the item to retrieve
+	 * @param item - the item to retrieve
 	 * @return the item if it's placed in the shopping cart, null otherwise
 	 */
-	public ShoppingItem getItem(int key){
-		return shoppingBasket.get(key);
+	public ShoppingItem getShoppingItem(Item item){
+		int index = indexOf(item);
+		if(index == -1){
+			return null;
+		}
+		return shoppingBasket.get(index);
 	}
 	
 	/**
@@ -108,19 +117,28 @@ public class ShoppingBasket
 	public void clear(){
 		shoppingBasket.clear();
 	}
-	
+
 	/**
-	 * This is a figurative method that simulates the purchase of
-	 * the items placed in the shopping baskets
+	 * Search the index of the ShoppingItem inside the shoppingBasket list
+	 * @param item - the item to search for the index
+	 * @return -1 if the shoppingBasket doesn't contains the item, oterwise 
+	 *         the index of the shopping item inside the shoppingBasket list
 	 */
-	public Receipt purchase(){
-		
-		if(shoppingBasket.isEmpty()){
-			throw new IllegalStateException("It's not possible to purchase an empty shopping basket!");
+	private int indexOf(Item item){
+		int index = -1;
+		for(int i=0; i < shoppingBasket.size(); i++){
+			ShoppingItem si = shoppingBasket.get(i);
+			if(si.getItem().equals(item)){
+				index = i;
+				break;
+			}
 		}
-		
-		//TODO: execute payment
-		
-		return new Receipt(shoppingBasket);
+			
+		return index;
 	}
+
+	public ArrayList<ShoppingItem> getShoppingBasket() {
+		return shoppingBasket;
+	}
+	
 }

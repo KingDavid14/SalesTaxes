@@ -1,4 +1,4 @@
-package com.ve.salestaxes.policies;
+package com.ve.salestaxes.services;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,9 +7,9 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ve.salestaxes.goods.CosmeticItem;
-import com.ve.salestaxes.goods.MultimediaItem;
-import com.ve.salestaxes.policies.DefaultSalesTaxPolicy;
+import com.ve.salestaxes.bo.CosmeticItem;
+import com.ve.salestaxes.bo.MultimediaItem;
+import com.ve.salestaxes.services.DefaultSalesTaxPolicyService;
 
 /**
  * 
@@ -21,7 +21,7 @@ import com.ve.salestaxes.policies.DefaultSalesTaxPolicy;
  * expected sales tax and the item sales tax calculated by the getSalesTaxAmount method
  *
  */
-public class DefaultSalesTaxPolicyTest
+public class DefaultSalesTaxPolicyServiceTest
 {
 	MultimediaItem musicCd;
 	CosmeticItem parfumeBottle;
@@ -30,16 +30,16 @@ public class DefaultSalesTaxPolicyTest
 	@Before
 	public void setUp() throws Exception
 	{
-		musicCd = new MultimediaItem("music CD", false, new BigDecimal("14.99"));
-		parfumeBottle = new CosmeticItem("parfume bottle", false, new BigDecimal("18.99"));
-		importedParfumeBottle = new CosmeticItem("imported parfume bottle", true, new BigDecimal("27.99"));
+		musicCd = new MultimediaItem(1, "music CD", false, new BigDecimal("14.99"));
+		parfumeBottle = new CosmeticItem(2, "parfume bottle", false, new BigDecimal("18.99"));
+		importedParfumeBottle = new CosmeticItem(3, "imported parfume bottle", true, new BigDecimal("27.99"));
 	}
 
 
 	@Test
 	public void testGetSalesTaxesAmount()
 	{
-		DefaultSalesTaxPolicy defaultSalesTaxPolicy = new DefaultSalesTaxPolicy();
+		DefaultSalesTaxPolicyService defaultSalesTaxPolicy = new DefaultSalesTaxPolicyService();
 		
 		assertEquals(new BigDecimal("1.50"), defaultSalesTaxPolicy.getSalesTaxesAmount(musicCd));
 		assertEquals(new BigDecimal("1.90"), defaultSalesTaxPolicy.getSalesTaxesAmount(parfumeBottle));

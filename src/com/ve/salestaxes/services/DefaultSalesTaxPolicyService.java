@@ -1,8 +1,8 @@
-package com.ve.salestaxes.policies;
+package com.ve.salestaxes.services;
 
 import java.math.BigDecimal;
 
-import com.ve.salestaxes.goods.Item;
+import com.ve.salestaxes.bo.Item;
 
 /**
  * 
@@ -11,7 +11,7 @@ import com.ve.salestaxes.goods.Item;
  * it calculate the basic sales tax and in case the import duty
  *
  */
-public class DefaultSalesTaxPolicy extends SalesTaxPolicy
+public class DefaultSalesTaxPolicyService extends SalesTaxPolicyService
 {
 	/**
 	 * For goods different from book, food and medical products there is 

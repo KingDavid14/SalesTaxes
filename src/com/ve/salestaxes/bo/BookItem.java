@@ -1,8 +1,8 @@
-package com.ve.salestaxes.goods;
+package com.ve.salestaxes.bo;
 
 import java.math.BigDecimal;
 
-import com.ve.salestaxes.policies.ExemptSalesTaxPolicy;
+import com.ve.salestaxes.services.ExemptSalesTaxPolicyService;
 
 /**
  * 
@@ -15,13 +15,14 @@ public class BookItem extends Item
 	 * The BookItem constructor take in input name, imported and taxFreePrice
 	 * The default sales tax policy is the BookSalesTaxPolicy that in case
 	 * can be changed at run time by calling its relative setter method
+	 * @param id
 	 * @param name
 	 * @param imported
 	 * @param taxFreePrice
 	 */
-	public BookItem(String name, boolean imported, BigDecimal taxFreePrice)
+	public BookItem(int id, String name, boolean imported, BigDecimal taxFreePrice)
 	{
-		super(name, imported, taxFreePrice, new ExemptSalesTaxPolicy());
+		super(id, name, imported, taxFreePrice, new ExemptSalesTaxPolicyService());
 		//Note: if the sales tax policy for this kind of item were to change 
 		//then probably it should be implemented an ad hoc policy instead of ExemptSalesTaxPolicy
 	}

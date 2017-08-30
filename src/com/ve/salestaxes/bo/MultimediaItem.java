@@ -1,8 +1,8 @@
-package com.ve.salestaxes.goods;
+package com.ve.salestaxes.bo;
 
 import java.math.BigDecimal;
 
-import com.ve.salestaxes.policies.DefaultSalesTaxPolicy;
+import com.ve.salestaxes.services.DefaultSalesTaxPolicyService;
 
 /**
  * 
@@ -14,9 +14,9 @@ import com.ve.salestaxes.policies.DefaultSalesTaxPolicy;
 public class MultimediaItem extends Item
 {
 
-	public MultimediaItem(String name, boolean imported, BigDecimal taxFreePrice)
+	public MultimediaItem(int id, String name, boolean imported, BigDecimal taxFreePrice)
 	{
-		super(name, imported, taxFreePrice, new DefaultSalesTaxPolicy());
+		super(id, name, imported, taxFreePrice, new DefaultSalesTaxPolicyService());
 	}
 
 }

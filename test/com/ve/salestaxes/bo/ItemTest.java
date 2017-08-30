@@ -1,4 +1,4 @@
-package com.ve.salestaxes.goods;
+package com.ve.salestaxes.bo;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import com.ve.salestaxes.goods.BookItem;
+import com.ve.salestaxes.bo.BookItem;
 
 /**
  * 
@@ -24,16 +24,16 @@ public class ItemTest
 	@Test
 	public void testIsValid()
 	{
-		BookItem invalidBookName = new BookItem(null, true, BigDecimal.TEN);
-		BookItem invalidBookName2 = new BookItem("", true, BigDecimal.TEN);
-		BookItem invalidBookName3 = new BookItem("     ", true, BigDecimal.TEN);
-		BookItem invalidBookPrice = new BookItem("book name", true, null);
-		BookItem invalidBookNameAndPrice = new BookItem(null, true, null);
-		BookItem invalidBookNameAndPrice2 = new BookItem("", true, null);
-		BookItem invalidBookNameAndPrice3 = new BookItem("     ", true, null);
+		BookItem invalidBookName = new BookItem(1, null, true, BigDecimal.TEN);
+		BookItem invalidBookName2 = new BookItem(2, "", true, BigDecimal.TEN);
+		BookItem invalidBookName3 = new BookItem(3, "     ", true, BigDecimal.TEN);
+		BookItem invalidBookPrice = new BookItem(4, "book name", true, null);
+		BookItem invalidBookNameAndPrice = new BookItem(5, null, true, null);
+		BookItem invalidBookNameAndPrice2 = new BookItem(6, "", true, null);
+		BookItem invalidBookNameAndPrice3 = new BookItem(7, "     ", true, null);
 		
-		BookItem validBook = new BookItem("scrum", true, BigDecimal.TEN);
-		BookItem validBook2 = new BookItem("lean startup", false, BigDecimal.TEN);
+		BookItem validBook = new BookItem(8, "scrum", true, BigDecimal.TEN);
+		BookItem validBook2 = new BookItem(9, "lean startup", false, BigDecimal.TEN);
 		
 		assertFalse(invalidBookName.isValid());
 		assertFalse(invalidBookName2.isValid());

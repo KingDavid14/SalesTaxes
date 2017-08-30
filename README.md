@@ -15,25 +15,21 @@ SalesTaxes
 	src 
 		com.ve.salestaxes
 							Main.java : main file that allows to launch the software and that generates the output for the three shopping basket of the test case
-							ecommerce
-								     Classes releated to shopping basket and receipt
-							goods
-									 Classes that describes all kinds of goods (releted to case study)
-							policies
-									 Classes that implements the sales taxes policies: It was adopted Strategy Design pattern (slightly edited) in order to calculate the sales taxes for different kinds of goods.
+							bo
+								     Business object classes releated (eg. basket, receipt, goods)
 							resources
 									BundleManager.java: A Singleton class that manages the properties files inside the same package
+							services
+									Classes that implements the business logic
 							
 	test (unit tests)
 		com.ve.salestaxes
-							ecommerce
-								     Test cases of shopping basket and receipt
-							goods
-									 Test cases of items classes
-							policies
-									 Test cases of policies classes
+							bo
+								     Test cases of business object classes
 							resources
 									 Test cases of BundleManager class
+							services
+									 Test cases for service layer classes
 							
 							AllTests.java: Test suite that allows to launch all test cases together from the IDE
 
