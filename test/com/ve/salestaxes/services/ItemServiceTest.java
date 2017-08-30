@@ -38,6 +38,7 @@ public class ItemServiceTest {
 		assertNotNull(item);
 		itemService.removeItem(item);
 		assertNull(itemService.getItem(BOOK_ITEM_ID));
+		itemService.addItem(item);
 	}
 	
 	@Test
@@ -58,6 +59,8 @@ public class ItemServiceTest {
 		item = itemService.getItem(BOOK_ITEM_ID);
 		
 		assertEquals("newName", item.getName());
+		item.setName(bundle.getString("book"));
+		itemService.updateItem(item);
 	}
 
 	

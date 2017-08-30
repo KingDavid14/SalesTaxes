@@ -20,9 +20,10 @@ import com.ve.salestaxes.resources.BundleManager;
 public class ItemService {
 	
 	private static BundleManager bundle = BundleManager.getInstance();
-	private static List<Item> items = new ArrayList<>();
+	private static List<Item> items;
 	
 	static{
+		items = new ArrayList<>();
 		items.add(new BookItem(1, bundle.getString("book"), false, new BigDecimal("12.49")));
 		items.add(new MultimediaItem(2, bundle.getString("music.cd"), false, new BigDecimal("14.99")));
 		items.add(new FoodItem(3, bundle.getString("chocolate.bar"), false, new BigDecimal("0.85")));

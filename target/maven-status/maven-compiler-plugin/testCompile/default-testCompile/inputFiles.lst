@@ -1,8 +1,10 @@
-C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\goods\ItemTest.java
-C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\policies\ExemptSalesTaxPolicyTest.java
-C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\policies\SalesTaxPolicyTest.java
-C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\policies\DefaultSalesTaxPolicyTest.java
-C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\ecommerce\ReceiptTest.java
-C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\ecommerce\ShoppingBasketTest.java
+C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\services\ExemptSalesTaxPolicyServiceTest.java
+C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\services\DefaultSalesTaxPolicyServiceTest.java
+C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\bo\ItemTest.java
+C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\services\ShoppingServiceTest.java
+C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\services\SalesTaxPolicyServiceTest.java
+C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\services\ItemServiceTest.java
+C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\bo\ShoppingBasketTest.java
+C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\services\ReceiptServiceTest.java
 C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\AllTests.java
 C:\Users\user\workspace\SalesTaxes\test\com\ve\salestaxes\resources\BundleManagerTest.java

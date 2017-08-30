@@ -1,0 +1,10 @@
+com\ve\salestaxes\services\ShoppingServiceTest.class
+com\ve\salestaxes\bo\ShoppingBasketTest.class
+com\ve\salestaxes\services\ReceiptServiceTest.class
+com\ve\salestaxes\services\ItemServiceTest.class
+com\ve\salestaxes\AllTests.class
+com\ve\salestaxes\resources\BundleManagerTest.class
+com\ve\salestaxes\services\DefaultSalesTaxPolicyServiceTest.class
+com\ve\salestaxes\services\SalesTaxPolicyServiceTest.class
+com\ve\salestaxes\bo\ItemTest.class
+com\ve\salestaxes\services\ExemptSalesTaxPolicyServiceTest.class
