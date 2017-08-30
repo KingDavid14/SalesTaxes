@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 public class BundleManager {
 	
 	private static final BundleManager INSTANCE = new BundleManager();
-	private static final String BUNDLE_NAME = "com.ve.salestaxes.resources.MessagesBundle";
+	private static final String BUNDLE_NAME = "resources/MessagesBundle";
 	
 	private static ResourceBundle messages;
 	private static final transient Logger log = Logger.getLogger(BundleManager.class);
