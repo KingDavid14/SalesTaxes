@@ -18,6 +18,19 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/resources</directory>
+			</resource>
+		</resources>
+
+		<testResources>
+			<testResource>
+				<directory>${project.basedir}/src/resources</directory>
+				<targetPath>resources/</targetPath>
+			</testResource>
+		</testResources>
 	</build>
 	<dependencies>
 		<dependency>
